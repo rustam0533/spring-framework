@@ -22,7 +22,10 @@ public class Employee extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private BigDecimal salary;
+    @ManyToOne
+    @JoinColumn(name = "department")
     private Department department;
+    @ManyToOne
     private Region region;
 
 }

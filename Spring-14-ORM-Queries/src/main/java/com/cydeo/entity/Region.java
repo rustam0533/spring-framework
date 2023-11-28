@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @Table(name = "regions")
+@Data
 @NoArgsConstructor
 public class Region  extends BaseEntity{
     private String region;

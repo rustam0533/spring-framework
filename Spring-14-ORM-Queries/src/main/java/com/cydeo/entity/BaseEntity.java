@@ -2,7 +2,9 @@ package com.cydeo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-@Entity
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class BaseEntity {
     @Id
     private Long id;
