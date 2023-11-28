@@ -1,6 +1,7 @@
 package com.cydeo.bootstrap;
 
 import com.cydeo.repository.DepartmentRepository;
+import com.cydeo.repository.EmployeeRepository;
 import com.cydeo.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -9,11 +10,13 @@ import org.springframework.stereotype.Component;
 public class DataGenerator implements CommandLineRunner {
     private final RegionRepository regionRepository;
     private final DepartmentRepository departmentRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository) {
+    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
         this.regionRepository = regionRepository;
 
         this.departmentRepository = departmentRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
@@ -36,5 +39,17 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println("findByCountryContainingOrderByCountry: " + regionRepository.findByCountryContainingOrderByCountry("Canada"));
         System.out.println("findTopByCountry: " + regionRepository.findTop2ByCountry("Canada"));
         System.out.println("-----------------------DEPARTMENT END-------------------");
+
+
+        System.out.println("-----------------------EMPLOYEE START-------------------");
+
+        System.out.println("getEmployeeDetail: " + employeeRepository.getEmployeeDetail());
+        System.out.println("getEmployeeSalary: " + employeeRepository.getEmployeeSalary());
+
+        System.out.println("-----------------------EMPLOYEE END-------------------");
+
     }
-}
+
+    }
+
+
