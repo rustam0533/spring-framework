@@ -49,4 +49,44 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     @Query("Select e from Employee e where e.email=?1 and e.salary=?2")
     Employee getEmployeeDetail(String email,int salary);
+
+    // not equal
+    @Query("select e from Employee e where e.salary <> ?1")
+    List<Employee> getEmployeeSalaryNotEqual(int salary);
+
+    //like/contains/startswith/endswith
+    @Query("select e from Employee e where e.firstName like ?1")
+    List<Employee> getEmployeeFirstNameLike(String pattern);
+
+    // less than
+    @Query("select e from Employee e where e.salary < ?1")
+    List<Employee> getEmployeeSalaryLessThan(int salary);
+
+    // greater than
+    @Query("select e from Employee e where e.salary > ?1")
+    List<Employee> getEmployeeSalaryGreaterThan(int salary);
+
+    // before
+    @Query("select e from Employee e where e.hireDate > ?1")
+    List<Employee> getEmployeeHireDateBefore(LocalDate date);
+
+    // between
+    @Query("select e from Employee e where e.salary between ?1 and ?2")
+    List<Employee> getEmployeeSalaryBetween(int salary1,int salary2);
+
+    //null
+    @Query("select e from Employee e where e.email is null")
+    List<Employee> getEmployeeEmailIsNull();
+
+    //notnull
+    @Query("select e from Employee e where e.email is not null")
+    List<Employee> getEmployeeEmailIsNotNull();
+
+    // sorting in ascending order
+    @Query("select e from Employee e order by e.salary")
+    List<Employee> getEmployeeSalaryOrderAsc();
+
+    // sorting in descending order
+    @Query("select e from Employee e order by e.salary desc")
+    List<Employee> getEmployeeSalaryOrderDesc();
 }
